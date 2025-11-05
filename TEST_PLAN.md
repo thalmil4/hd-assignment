@@ -6,6 +6,7 @@
 2. [Test Objectives](#2-test-objectives)
 3. [Test Environment](#3-test-environment)
 4. [Test Cases](#4-test-cases)
+5. [Test Case Summary](#5-test-case-summary)
 
 ---
 
@@ -56,9 +57,9 @@ Valid years: **2015, 2016, 2017**
 | Test Case Number | Test Case                                                | Type |
 |------------------|----------------------------------------------------------|------|
 | 4.1.1            | Submit valid car registration with year (2015,2016,2017) | Positive |
-| 4.1.2            | Multiple consecutive valid submissions                   | State Management                                          |
-| 4.1.3            | Submit invalid then valid data                           | State Management                                         |
-| 4.1.4            | Submit form using Enter key                              | Input Behavior                                           |
+| 4.1.2            | Multiple consecutive valid submissions                   | State Management |
+| 4.1.3            | Submit invalid then valid data                           | State Management |
+| 4.1.4            | Submit form using Enter key                              | Input Behavior   |
 
 #### 4.1.1 Valid Registration for Each Year
 
@@ -222,12 +223,12 @@ Valid years: **2015, 2016, 2017**
 
 ### 4.3 Invalid Year Selection Scenarios
 
-| Test Case | Type |
-|-----------|------|
-| Submit without selecting year | Negative |
-| Submit with both fields empty | Negative |
+| Test Case Number | Test Case                     | Type |
+|------------------|-------------------------------|------|
+| 4.3.1            | Submit without selecting year | Negative |
+| 4.3.2            | Submit with both fields empty | Negative |
 
-####  Submit Without Selecting Year
+#### 4.3.1 Submit Without Selecting Year
 
 **Objective**: Verify that year selection is mandatory
 
@@ -243,7 +244,7 @@ Valid years: **2015, 2016, 2017**
 
 ---
 
-####  Submit With Both Fields Empty
+#### 4.3.2 Submit With Both Fields Empty
 
 **Objective**: Verify validation when all fields are empty
 
@@ -261,12 +262,12 @@ Valid years: **2015, 2016, 2017**
 
 ### 4.4 Security Testing Scenarios
 
-| Test Case | Type |
-|-----------|------|
-| SQL injection attempt in registration field | Security |
-| XSS attempt in registration field | Security |
+| Test Case Number | Test Case                                   | Type |
+|------------------|---------------------------------------------|------|
+| 4.4.1            | SQL injection attempt in registration field | Security |
+| 4.4.2            | XSS attempt in registration field           | Security |
 
-####  SQL Injection Attempt
+#### 4.4.1 SQL Injection Attempt
 
 **Objective**: Verify that SQL injection attempts are rejected and do not cause vulnerabilities
 
@@ -283,7 +284,7 @@ Valid years: **2015, 2016, 2017**
 
 ---
 
-####  XSS (Cross-Site Scripting) Attempt
+#### 4.4.2 XSS (Cross-Site Scripting) Attempt
 
 **Objective**: Verify that XSS attempts are rejected and do not execute scripts
 
@@ -310,7 +311,7 @@ After each test execution:
 
 ---
 
-## 13. Test Case Summary
+## 5. Test Case Summary
 
 ### Test Distribution
 
