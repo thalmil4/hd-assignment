@@ -5,6 +5,8 @@ import io.cucumber.java.After;
 import io.cucumber.java.AfterAll;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -20,7 +22,7 @@ public class TestContext {
     private BrowserContext context;
     private Page page;
 
-
+    private static Logger logger = LoggerFactory.getLogger(TestContext.class);
     // Configuration
     private static final String BROWSER_TYPE = System.getProperty("browser", "chromium"); // chromium, firefox, webkit
     private static final boolean HEADLESS = Boolean.parseBoolean(System.getProperty("headless", "true"));
@@ -38,7 +40,7 @@ public class TestContext {
 
         page = context.newPage();
 
-        System.out.println("Starting scenario: " + scenario.getName());
+        logger.info("Starting scenario: {}", scenario.getName());
     }
 
     @After
@@ -67,7 +69,7 @@ public class TestContext {
             playwright.close();
         }
 
-        System.out.println("Finished scenario: " + scenario.getName() + " - Status: " + scenario.getStatus());
+        logger.info("Finished scenario: {} - Status: {}", scenario.getName(), scenario.getStatus());
     }
 
     private Browser createBrowser() {
