@@ -89,9 +89,6 @@
                 <includes>
                     <include>**/*Runner.java</include>
                 </includes>
-                <systemPropertyVariables>
-                    <cucumber.filter.tags>${cucumber.filter.tags}</cucumber.filter.tags>
-                </systemPropertyVariables>
             </configuration>
         </plugin>
     </plugins>

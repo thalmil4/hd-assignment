@@ -34,7 +34,7 @@ build: ## Rebuild Docker image without cache
 	@echo "$(GREEN)Rebuild completed!$(NC)"
 
 test: build ## Run all tests (use ARGS= for custom arguments)
-	@echo "$(GREEN)Running tests: mvn clean test $(ARGS)$(NC)"
+	@echo "$(GREEN)Running tests: mvn test $(ARGS)$(NC)"
 	@mkdir -p $(HOME)/.m2
 	@docker run --rm \
 		--name $(CONTAINER_NAME) \
@@ -42,7 +42,5 @@ test: build ## Run all tests (use ARGS= for custom arguments)
 		-v $(SCREENSHOTS_DIR):/app/screenshots \
 		-v $(HOME)/.m2:/.m2 \
 		-e MAVEN_CONFIG=/.m2 \
-		-e BROWSER=$(or $(BROWSER),chromium) \
-		-e HEADLESS=$(or $(HEADLESS),true) \
 		$(IMAGE_NAME) \
-		sh -c "mvn test $(ARGS)"
+		sh -c "mvn test -Dbrowser=$(or $(BROWSER),chromium) -Dheadless=true $(ARGS)"

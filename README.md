@@ -99,26 +99,35 @@ make test ARGS='-Dtest=RegressionTestRunner'
 
 **Run with different browsers:**
 ```
+make test BROWSER=chromium   # Default
 make test BROWSER=firefox
 make test BROWSER=webkit
 ```
 
-**Run in headed mode (visible browser):**
+**Combine with test suites:**
 ```
-make test HEADLESS=false
+# Run valid tests in Firefox
+make test ARGS='-Dtest=ValidTestRunner' BROWSER=firefox
+
+# Run security tests in WebKit
+make test ARGS='-Dtest=SecurityTestRunner' BROWSER=webkit
+
+# Run all regression tests in Chromium
+make test ARGS='-Dtest=RegressionTestRunner' BROWSER=chromium
 ```
 
-**Combine options:**
-```
-make test ARGS='-Dtest=ValidTestRunner' BROWSER=firefox HEADLESS=false
-```
+**How it works:**
+- `BROWSER` variable sets the browser type (chromium, firefox, webkit) - defaults to chromium
+- `ARGS` variable passes additional Maven arguments like `-Dtest=TestRunner`
+- Tests always run in **headless mode** in Docker (no visible browser window)
+- Screenshots are still captured on failures
 
 The Makefile automatically:
-- Rebuilds the Docker image
-- Runs tests in an isolated container
-- Generates reports in `target/cucumber-reports/`
-- Captures screenshots in `screenshots/` (on failure)
-- Sets correct permissions for accessing reports on the host
+- Rebuilds the Docker image with `--no-cache`
+- Runs tests in an isolated headless container
+- Passes browser settings as Maven system properties
+
+**Note:** To see the browser window during test execution, run tests locally with Maven instead of Docker (see "Using Maven Locally" section below).
 
 ### Using Maven Locally
 
