@@ -56,6 +56,8 @@ Before running the tests, ensure you have:
 
 ## Installation
 
+### Option 1: Local Installation
+
 1. **Clone or download the project**
    ```
    cd hd-assignment
